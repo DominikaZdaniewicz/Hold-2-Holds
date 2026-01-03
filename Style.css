@@ -175,6 +175,7 @@ header {
 
 #products {
   margin: 100px 0px;
+  scroll-margin-top: 150px;
 }
 
 #productList {  
@@ -310,6 +311,7 @@ header {
   width: 100%;
   background-color: #4b5322;
   padding: 50px 0px;
+  scroll-margin-top: 100px;
 }
 
 .modul {
