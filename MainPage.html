@@ -1,0 +1,254 @@
+<!--
+4. Mini „Sklep” (bez backendu)
+
+   Funkcje:
+   - lista produktów (z obiektu JS)
+   - dodawanie do koszyka
+   - usuwanie z koszyka
+   - suma ceny
+   - ilość produktów
+   - zapis koszyka w localStorage
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id = "info">
+        <div class = "container">
+            <p>Free shipping from €500.</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+        <div class="company">
+            <img src="./grafica/logo.jpg" alt="Hold 2 Holds logo" loading="lazy">
+
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="#products"><span>Products</span></a>
+                    </li>
+                    <li>
+                        <a href="#box"><span>About us</span></a>
+                    </li>
+                    <li>
+                        <a href="#contacts"><span>Contact</span></a>
+                    </li>
+                    <li class="checkout">
+                        <button>
+                            <span>Check out</span>
+                            <img src="./grafica/cart.png" alt="Shopping cart icon">
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        </div>
+    </header>
+
+
+    <section class = "banner">
+        <div class = "slides-wrapper">
+            <div class = "slide" id = "women">
+                <img src="./grafica/banner_1.jpg" alt="Women climbing" loading="lazy">
+                <button type="button">VIEW OUR JUGS</button>
+            </div>
+            <div class = "slide" id = "men">
+                <img src="./grafica/banner_4.jpg" alt="Men climbing" loading="lazy">
+                <button type="button">VIEW OUR CRIMPS</button>
+            </div>
+            <div class = "slide" id = "holds">
+                <img src="./grafica/banner_6.jpg" alt="Climbing holds" loading="lazy">
+                <button type="button">VIEW BOLTS AND T-NUTS</button>
+            </div>
+        </div>
+    </section>
+
+    <div class = "container">
+        <section id = "products">
+            <h3>RECOMMENDED PRODUCTS</h3>
+            <div class="carousel">
+                <button class="prev">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div id = "productList">
+                        <div class = "product">
+                            <img src = "./grafica/jugs5.png" alt = "Five climbing jugs in five colors" loading = "lazy">
+                            <p class = "name">Jugs - Set of 5</p>
+                            <p class = "description">Big, comfy handholds that make gripping easy and resting on a route a breeze.</p>
+                            <div class = "shop">
+                                <p class = "price">€59</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/crimps10.png" alt = "Ten climbing crimps in five colors" loading = "lazy">
+                            <p class = "name">Crimps - Set of 10</p>
+                            <p class = "description">Small edges in climbing that are gripped with fingertips, often using the thumb for extra support.</p>
+                            <div class = "shop">
+                                <p class = "price">€99</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/pinches10.png" alt = "Ten climbing pinches in five colors" loading = "lazy">
+                            <p class = "name">Pinches - Set of 10</p>
+                            <p class = "description">Big, comfy handholds that make gripping easy and resting on a route a breeze.</p>
+                            <div class = "shop">
+                                <p class = "price">€109</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/slopers5.png" alt = "Five climbing slopers in five colors" loading = "lazy">
+                            <p class = "name">Slopers - Set of 5</p>
+                            <p class = "description">Holds that are gripped by squeezing them between the thumb and fingers, requiring hand strength and good thumb engagement.</p>
+                            <div class = "shop">
+                                <p class = "price">€75</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/crimps10.png" alt = "Climbing volume" loading = "lazy">
+                            <p class = "name">Volume</p>
+                            <p class = "description">Large, hollow holds that change wall angles and create new surfaces, adding complexity and movement to climbing routes.</p>
+                            <div class = "shop">
+                                <p class = "price">€49</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/crimps10.png" alt = "Climbing footholds" loading = "lazy">
+                            <p class = "name">Footholds - Set of 15</p>
+                            <p class = "description">Small holds designed for precise foot placement, helping climbers maintain balance and control on the wall.</p>
+                            <div class = "shop">
+                                <p class = "price">€45</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/crimps10.png" alt = "Bolts" loading = "lazy">
+                            <p class = "name">Bolts - Set of 50</p>
+                            <p class = "description">Fixed metal anchors drilled into the rock or wall, used to attach quickdraws and protect climbers from falls.</p>
+                            <div class = "shop">
+                                <p class = "price">€39</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                        <div class = "product">
+                            <img src = "./grafica/crimps10.png" alt = "T-nuts" loading = "lazy">
+                            <p class = "name">T-nuts - Set of 50</p>
+                            <p class = "description">Metal inserts mounted in climbing walls that allow holds to be securely bolted on and easily repositioned.</p>
+                            <div class = "shop">
+                                <p class = "price">€29</p>
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="next">&#10095;</button>
+            </div>
+        </section>
+    </div>
+
+    <section id = "box">
+        <div id = "content">
+            <h2>ABOUT US</h2>
+            <div class = "modul">
+                <div class="text">
+                    <p>
+                        <strong>Hold 2 Holds</strong> created out of a simple love for climbing and the people around it. What began as shared sessions on the wall and endless
+                        conversations about movement, holds, and training slowly grew into an idea: to build a place made by climbers, for climbers.
+                    </p>
+                    <p>
+                        We focus on climbing holds and equipment that we genuinely trust and use ourselves - solid, well-designed, and built to last. Every product in our 
+                        shop is tested in real conditions and shaped by our own experience on the wall.
+                    </p>
+                    <p>
+                        No matter if you’re just starting out or working on your next project, we’re here to support your climbing journey and grow together with the community.
+                    </p>
+                </div>
+                <img src = "./grafica/about_us.jpg" alt = "Three people in front of climbing wall" loading = "lazy">
+            </div>
+        </div>
+    </section>
+    <div class = "container">
+        <section id = "us">
+            <h3>OUR TEAM</h3>
+            <div class = "modul">
+                <img src = "./grafica/nina.jpg" alt = "Women holding a rope" loading = "lazy">
+                <div class="text">
+                    <p> 
+                        <strong>Nina</strong> is the creative heart of Hold 2 Holds. She pays attention to the details - how a hold feels under your fingers, 
+                        how movement flows between shapes, and how climbing can be both challenging and fun. For her, climbing is as much about creativity as it is 
+                        about strength.
+                    </p>
+                    <p>
+                        When she’s not working on new ideas for the shop, she’s usually climbing, sketching concepts, or finding inspiration outdoors.
+                    </p>
+                </div>
+            </div>
+            <div class = "modul">
+                <img src = "./grafica/kinga.jpg" alt = "Women getting ready to climb" loading = "lazy">
+                <div class="text">
+                    <p>
+                        <strong>Kinga</strong> is the analytical and strategic mind of the team. She’s passionate about training smart, understanding movement, 
+                        and building equipment that truly helps climbers progress. Her approach is practical, focused, and always rooted in real climbing needs.
+                    </p>
+                    <p>
+                        Outside of work, Kinga enjoys pushing her limits on the wall, testing new training methods, and sharing knowledge with others.
+                    </p>
+                </div>
+            </div>
+            <div class = "modul">
+                <img src = "./grafica/mateusz.jpg" alt = "Men climbing" loading = "lazy">
+                <div class="text">
+                    <p>
+                        <strong>Mateusz</strong> is the technical backbone of Hold 2 Holds. He loves problem-solving, testing ideas, and making sure 
+                        everything works exactly as it should - from the durability of holds to the small details that often go unnoticed. His climbing style reflects 
+                        his mindset: precise, patient, and thoughtful.
+                    </p>
+                    <p>
+                        When Mateusz isn’t working on improvements and new solutions, you’ll find him climbing, experimenting with setups, or fine-tuning the gear behind the scenes.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class = "line"></div>
+
+    <footer>
+        <div class = "brand">
+            <img src = "./grafica/logo.jpg" alt = "Two holds as H-shapes with climber between" loading = "lazy">
+            <p><strong>Hold 2 Holds</strong></p>
+         </div>
+        <ul class = "contact">
+            <li class = "contact-item">
+                <img src = "./grafica/insta.png" alt = "Instagram icon" loading = "lazy">
+                <p>@hold2holds</p>
+            </li>
+            <li class = "contact-item">
+                <img src = "./grafica/mail.png" alt = "E-mail icon" loading = "lazy">
+                <p>contact@h2h.com</p>
+            </li>
+            <li class = "contact-item">
+                <img src = "./grafica/phone.png" alt = "Phone icon" loading = "lazy">
+                <p>+48 574 125 966</p>
+            </li>
+        </ul>
+    </footer>
+
+    <div class = "line"></div>
+    
+    <script src="shop.js">
+    </script>
+</body>
+</html>
