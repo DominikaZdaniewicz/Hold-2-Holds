@@ -3,6 +3,25 @@
   padding: 0px;
 }
 
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page > header,
+.page > footer {
+  flex: 0 0 auto;
+}
+
+.page > .container {
+  flex: 1 0 auto;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: #fff;
   font-family: Helvetica, sans-serif;
@@ -22,6 +41,7 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
 }
 
 #info {
@@ -32,6 +52,10 @@ header {
   color: #FFF;
   padding: 5px 0px;
   font-size: small;
+}
+
+#info .container {
+  width: auto;
 }
 
 .menu {
@@ -165,7 +189,8 @@ header {
   background-color: #869c2f;
 }
 
-#products h3 {
+#products h3,
+#cart h3 {
   font-size: 28px;
   align-self: flex-start;
   text-align: left;
@@ -370,7 +395,7 @@ strong {
 .line {
   background-color: #d98d25;
   padding: 1px;
-  margin: 15px 0px;
+  margin: 10px 0px;
 }
 
 .contact {
@@ -392,7 +417,7 @@ strong {
 }
 
 .brand img {
-  width:70px;
+  width: 60px;
   height: auto;
 }
 
@@ -414,7 +439,7 @@ strong {
 }
 
 footer {
-  margin: 20px auto;
+  margin: 5px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -422,4 +447,221 @@ footer {
 
 footer p {
   color: #25201c;
+}
+
+@media screen and (max-width: 1024px) {
+  .menu {
+    gap: 50px; 
+    flex-wrap: wrap;
+  }
+
+  #productList {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product {
+    flex: 0 0 45%;
+    margin-bottom: 20px;
+  }
+
+  .modul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #content img, .modul img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .company {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #productList {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product {
+    flex: 0 0 90%; 
+  }
+
+  .slide button {
+    bottom: 80px;
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  #box, #us {
+    padding: 20px 10px;
+  }
+
+  .modul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/*Check Out Page*/
+
+.cart {
+  margin: 50px 0;
+}
+
+#empty {
+  margin: 180px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#empty img {
+  width: 80px;
+  height: auto;
+}
+
+.product-table {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 50px 0;
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.table-header,
+.table-row {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #d98d25;
+  border-top: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.table-header span,
+.table-row span {
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.table-name {
+  flex: 2;
+  text-align: left;
+}
+
+.table-header {
+  border: 2px solid #869c2f;
+}
+
+.remove-item {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 18px;
+}
+
+.summary {
+  border: 1px solid #d98d25;
+  border-radius: 5px;
+  padding: 10px 100px;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  #empty {
+    margin: 120px 0;
+    gap: 15px;
+  }
+
+  #empty img {
+    width: 60px;
+  }
+
+  .summary {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 50px;
+    align-items: flex-start;
+  }
+
+  .table-header span,
+  .table-row span {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .table-name {
+    flex: 3;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #empty {
+    margin: 80px 0;
+    gap: 10px;
+  }
+
+  #empty img {
+    width: 40px;
+  }
+
+  .product-table {
+    margin: 20px 0;
+  }
+
+  .table-header,
+  .table-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+  }
+
+  .table-header span,
+  .table-row span {
+    text-align: left;
+    padding: 5px 0;
+    flex: none;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .summary {
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .remove-item {
+    font-size: 16px;
+  }
 }

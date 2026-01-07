@@ -65,3 +65,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateTransform();
 });
+
+/* Product list */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Adding products
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      const productEl = event.target.closest('.product');
+      const name = productEl.querySelector('.name').textContent;
+      const price = parseFloat(productEl.querySelector('.price').textContent.replace('€',''));
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.amount++;
+        existing.totalPrice = existing.amount * price;
+      } else {
+        cart.push({ name, amount: 1, price, totalPrice: price });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    });
+  });
+
+  // Going to check out
+  const toCheckOutBtn = document.querySelector('#toCheckOut');
+  if (toCheckOutBtn) {
+    toCheckOutBtn.addEventListener('click', () => {
+      window.location.href = 'checkout.html';
+    });
+  }
+
+  // Checkout: cart
+  const productTableEl = document.querySelector('#cart-content');
+  const emptyCartEl = document.querySelector('#empty');
+
+  if (productTableEl && emptyCartEl) {
+    const tableList = productTableEl.querySelector('.product-table');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const summaryCostEl = document.querySelector('.summary .cost');
+
+    function renderCart() {
+      if (cart.length === 0) {
+        productTableEl.classList.add('hidden');
+        emptyCartEl.classList.remove('hidden');
+        summaryCostEl.textContent = "$0.00";
+        summaryCostEl.parentElement.classList.add('hidden');
+        return;
+      }
+
+      emptyCartEl.classList.add('hidden');
+      productTableEl.classList.remove('hidden');
+      summaryCostEl.parentElement.classList.remove('hidden');
+
+      tableList.querySelectorAll('li:not(.table-header)').forEach(li => li.remove()); 
+
+      let totalSum = 0; 
+
+      cart.forEach((item, index) => {
+        const totalPrice = item.price * item.amount; 
+        totalSum += totalPrice;
+
+        const li = document.createElement('li'); 
+        li.classList.add('table-row');
+
+        li.innerHTML = `
+          <span class="table-name">${item.name}</span>
+          <span>${item.amount}</span>
+          <span>$${item.price.toFixed(2)}</span>
+          <span>$${totalPrice.toFixed(2)}</span> <!-- ZMIANA: użycie totalPrice -->
+          <span><button data-index="${index}" class="remove-item">X</button></span>
+        `;
+
+        tableList.appendChild(li);
+      });
+
+      summaryCostEl.textContent = `$${totalSum.toFixed(2)}`;
+    };
+
+    renderCart();
+
+    productTableEl.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-item')) {
+        const index = e.target.dataset.index;
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      };
+    });
+  };
+});

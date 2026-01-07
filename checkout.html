@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Out</title>
+    <link rel="stylesheet" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class = "page">
+
+        <div id = "info">
+            <div class = "container">
+                <p>Free shipping from €500.</p>
+            </div>
+        </div>
+
+        <header>
+            <div class = "container">
+                <div class = "company">
+                    <a href="index.html">
+                        <img src = "./grafica/logo.jpg" alt = "Hold 2 Holds logo" loading = "lazy" href = "#info">
+                    </a>
+
+                    <nav>
+                        <ul class = "menu">
+                            <li>
+                                <a href = "index.html#products"><span>Products</span></a>
+                            </li>
+                            <li>
+                                <a href = "index.html#box"><span>About us</span></a>
+                            </li>
+                            <li>
+                                <a href = "index.html#footer" ><span>Contact</span></a>
+                            </li>
+                            <li class = "checkout">
+                                <button>
+                                    <span>Check out</span>
+                                    <img src = "./grafica/cart.png" alt = "Shopping cart icon" loading = "lazy">
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class = "container">
+            <section id = "cart">
+                <h3>Check out</h3>
+                <section id = "empty">
+                    <img src = "./grafica/cart2.png" alt = "Shopping cart icon" loading = "lazy">
+                    <span>Your cart is currently empty.</span>
+                    <a href = "index.html#products">Go back to shop.</a>
+                </section>
+                <section id="cart-content">
+                    <ul class = "product-table">
+                        <li class="table-header">
+                            <span class = "table-name">PRODUCT</span>
+                            <span>AMOUNT</span>
+                            <span>UNIT PRICE</span>
+                            <span>TOTAL PRICE</span>
+                            <span>REMOVE ITEM</span>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <div class = "summary">
+                <h3>Summary</h3>
+                <span class = "cost">$0.00</span>
+            </div>
+        </div>
+
+        <div class = "line"></div>
+
+        <footer id = "footer">
+            <div class = "brand">
+                <img src = "./grafica/logo.jpg" alt = "Two holds as H-shapes with climber between" loading = "lazy">
+                <p><strong>Hold 2 Holds</strong></p>
+            </div>
+            <ul class = "contact">
+                <li class = "contact-item">
+                    <img src = "./grafica/insta.png" alt = "Instagram icon" loading = "lazy">
+                    <p>@hold2holds</p>
+                </li>
+                <li class = "contact-item">
+                    <img src = "./grafica/mail.png" alt = "E-mail icon" loading = "lazy">
+                    <p>contact@h2h.com</p>
+                </li>
+                <li class = "contact-item">
+                    <img src = "./grafica/phone.png" alt = "Phone icon" loading = "lazy">
+                    <p>+48 574 125 966</p>
+                </li>
+            </ul>
+        </footer>
+
+        <div class = "line"></div>
+    
+        <script src="shop.js">
+        </script>
+    </div>
+</body>
+</html>
